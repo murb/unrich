@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["git@murb.nl"]
 
   spec.summary       = "unrich unriches RTF; (rtf2txt)"
-  spec.description   = "unrich reads an rtf and can only output it as UTF-8 encoded string"
+  spec.description   = "unrich is a pure ruby rtf2txt converter; it reads an rtf and can only output it as UTF-8 encoded string"
   spec.homepage      = "https://github.com/murb/unrich"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
