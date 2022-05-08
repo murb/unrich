@@ -52,6 +52,11 @@ F45.012
     assert_equal "29/11/2017 ktg 1104,83 weggeboekt dvr \nann 01/2012 afstand bezwaar komt werk kopen van stg dvr 21/11/11\n\n14/11/11 bri tarief 2012\nkorting -4% jan 2013", unrich_text.to_txt
   end
 
+  def test_to_txt_sample3
+    unrich_text = read(:sample3)
+    assert_equal "Ax: abc 22 oud¨ p/o ingetr \n2403/2011  dvr", unrich_text.to_txt
+  end
+
   private
 
   def read fixture_name

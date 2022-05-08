@@ -3,6 +3,8 @@
 require_relative "unrich/version"
 
 module Unrich
+  DEFAULT_ENCODING = "Windows-1252"
+
   class Error < StandardError; end
 
   # Main class that parses the richt text to unrich text, read regular plain text
@@ -15,14 +17,15 @@ module Unrich
 
     def encoding
       @encoding ||= {
-        "ansicpg1252" => "Windows-1252"
-      }[rtf_text.match(/\A\{\\rtf1\\([a-zA-Z0-9]*)\\([a-zA-Z0-9]*)\\/)[2]]
+        "ansicpg1252" => "Windows-1252",
+        nil => nil
+      }[rtf_text.match(/\A\{\\rtf1\\([a-zA-Z0-9]*)\\([a-zA-Z0-9]*)\\/)&.[](2)]
     end
 
     def to_txt
       txt = rtf_text.gsub(/\\\'([a-z0-9]{2})/) { |a|
         [a.sub("\\'",
-               '')].pack("H*").force_encoding(encoding).encode("utf-8")
+               '')].pack("H*").force_encoding(encoding || Unrich::DEFAULT_ENCODING).encode("utf-8")
       }
                     .gsub(/\\par\s/, "\n")
                     .sub('{\rtf1', "")
