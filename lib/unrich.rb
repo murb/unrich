@@ -29,7 +29,8 @@ module Unrich
                     .sub(/{[^{^}]*}/, "")
                     .sub(/{[^{^}]*}/, "")
                     .sub(/{[^{^}]*}/, "")
-                    .gsub(/\\\w*/, "").strip
+                    .gsub(/\\\w*/, "")
+                    .gsub(/\{\s*\;\;\}/,"").strip
       txt[txt.length - 1] = "" if txt.end_with?("}")
       txt.delete("\u0000").strip
     end
