@@ -56,6 +56,13 @@ F45.012
     unrich_text = read(:sample3)
     assert_equal "Ax: abc 22 oud¨ p/o ingetr \n2403/2011  dvr", unrich_text.to_txt
   end
+  #
+  # def test_to_txt_sample4
+  #   unrich_text = read(:sample4)
+  #   p read(:sample4)
+  #   p unrich_text.to_txt
+  #   assert_equal "dus.", unrich_text.to_txt
+  # end
 
   private
 

@@ -31,9 +31,12 @@ module Unrich
                     .sub('{\rtf1', "")
                     .sub(/{[^{^}]*}/, "")
                     .sub(/{[^{^}]*}/, "")
-                    .sub(/{[^{^}]*}/, "")
                     .gsub(/\\\w*/, "")
-                    .gsub(/\{\s*\;\;\}/,"").strip
+                    .gsub(/\{\s*\;\;\}/,"")
+                    .sub(/{[^{^}]*}/, "")
+                    .sub("{ ;;;}","")
+                    .sub(/\{\}/, "")
+                    .strip
       txt[txt.length - 1] = "" if txt.end_with?("}")
       txt.delete("\u0000").strip
     end
